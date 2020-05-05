@@ -5,6 +5,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+import thread
+
 
 ## Functions:
 # Part 1 - Kyle:
@@ -19,7 +21,85 @@ def Insertionsort(array):
         array[move + 1] = check;##inserting the element in the position where the item behind is no longer greater than it or if there is nothing left
     return time.time()
 # Part 3 - Sumedh:
-def
+'''
+void merge(int low, int mid, int high) 
+{ 
+    int* left = new int[mid - low + 1]; 
+    int* right = new int[high - mid]; 
+  
+    // n1 is size of left part and n2 is size 
+    // of right part 
+    int n1 = mid - low + 1, n2 = high - mid, i, j; 
+  
+    // storing values in left part 
+    for (i = 0; i < n1; i++) 
+        left[i] = a[i + low]; 
+  
+    // storing values in right part 
+    for (i = 0; i < n2; i++) 
+        right[i] = a[i + mid + 1]; 
+  
+    int k = low; 
+    i = j = 0; 
+  
+    // merge left and right in ascending order 
+    while (i < n1 && j < n2) { 
+        if (left[i] <= right[j]) 
+            a[k++] = left[i++]; 
+        else
+            a[k++] = right[j++]; 
+    } 
+  
+    // insert remaining values from left 
+    while (i < n1) { 
+        a[k++] = left[i++]; 
+    } 
+  
+    // insert remaining values from right 
+    while (j < n2) { 
+        a[k++] = right[j++]; 
+    } 
+} 
+'''
+'''
+// merge sort function 
+void merge_sort(int low, int high) 
+{ 
+    // calculating mid point of array 
+    int mid = low + (high - low) / 2; 
+    if (low < high) { 
+  
+        // calling first half 
+        merge_sort(low, mid); 
+  
+        // calling second half 
+        merge_sort(mid + 1, high); 
+  
+        // merging the two halves 
+        merge(low, mid, high); 
+    } 
+} 
+'''
+
+'''
+void* merge_sort(void* arg) 
+{ 
+    // which part out of 4 parts 
+    int thread_part = part++; 
+  
+    // calculating low and high 
+    int low = thread_part * (MAX / 4); 
+    int high = (thread_part + 1) * (MAX / 4) - 1; 
+  
+    // evaluating mid point 
+    int mid = low + (high - low) / 2; 
+    if (low < high) { 
+        merge_sort(low, mid); 
+        merge_sort(mid + 1, high); 
+        merge(low, mid, high); 
+    } 
+} 
+'''
 
 
 #Part 1 - Kyle
