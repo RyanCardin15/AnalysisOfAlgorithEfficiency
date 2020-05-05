@@ -5,11 +5,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import time
-#Part 1 - Kyle
 
-
-#Part 2 - Ryan
-#Part a
+## Functions:
+# Part 1 - Kyle:
+# Part 2 - Ryan:
 def Insertionsort(array):
     for i in range(1, len(array)):##Start iteration through the array from the second element, making the sorted array a length of 1, the first element
         check = array[i]##This is the item being compared to the sorted array
@@ -19,7 +18,15 @@ def Insertionsort(array):
             move -= 1##moving our comparing element in the sorted array back one
         array[move + 1] = check;##inserting the element in the position where the item behind is no longer greater than it or if there is nothing left
     return time.time()
+# Part 3 - Sumedh:
+def
 
+
+#Part 1 - Kyle
+
+
+#Part 2 - Ryan
+#Part a --> Located Under Functions
 #part c
 array1 = [1]
 array2 = [100-i for i in range(100)]
