@@ -206,7 +206,6 @@ try:
     x_vals1 = [1,100,200,300,400,500,600,700,800,900,1000]
     y_vals1 = [time1,time2,time3,time4,time5,time6,time7,time8,time9,time10,time11]
     plt.plot(x_vals1, y_vals1)
-    ##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
     plt.xlabel('Number of Elements')
     plt.ylabel('Time of Computation')
     plt.title('Part C')
@@ -216,7 +215,6 @@ try:
     x_vals2 = [1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
     y_vals2 = [getMn(1), getMn(100), getMn(200), getMn(300), getMn(400), getMn(500), getMn(600), getMn(700), getMn(800), getMn(900), getMn(1000)]
     plt.plot(x_vals2, y_vals2)
-    ##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
     plt.title('Part D')
     plt.xlabel('Number of Elements')
     plt.ylabel('Number of Comparisons')
