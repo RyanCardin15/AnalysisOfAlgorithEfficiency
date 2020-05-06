@@ -25,4 +25,5 @@ We comapare two sorting algorithms, and analyze each of their eifficiancies.
 or
 
 > cd venv
+
 > python AlgorithmAnalysis.py
