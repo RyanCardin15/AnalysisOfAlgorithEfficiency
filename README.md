@@ -21,3 +21,8 @@ Threaded Merge Sort
 
 ## To Run
 python /venv/AlgorithmAnalysis.py
+
+or
+
+cd venv
+python AlgorithmAnalysis.py
