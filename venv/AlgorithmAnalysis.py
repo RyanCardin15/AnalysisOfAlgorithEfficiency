@@ -8,11 +8,12 @@ import matplotlib.pyplot as plt
 import time
 import threading
 import sys
-##import inspect
+import gc
 import math
 
 ## Functions:
 # Part 1 - Kyle:
+
 # Part 2 - Ryan:
 ## calculates insertion comparisons
 def getCn(n):
@@ -29,9 +30,9 @@ def Insertionsort(array):
         array[move + 1] = check##inserting the element in the position where the item behind is no longer greater than it or if there is nothing left
     end = time.time() ## end clock
     return (end-start)
+
 # Part 3 - Sumedh:
 ## calculates merge comparisons
-
 def getMn(n): ## Python has a recursion limit so will only go up to 996 iterations
     sys.setrecursionlimit(sys.getrecursionlimit() + 1)
     if n == 1:
@@ -97,6 +98,7 @@ def merge_sort(arr, low,high):
     ##sys.setrecursionlimit(sys.getrecursionlimit() + 1)
     mid = low + (high - 1) // 2
     if low < high:
+        try:
             ## calling first half in a thread
             task1 = threading.Thread(target=merge_sort,args=(arr, low, mid))
 
@@ -109,6 +111,13 @@ def merge_sort(arr, low,high):
 
             ## merging the two halves
             merge(arr, low, mid, high)
+            task1.join()
+            task2.join()
+        except:
+            print("Thread - Skip")
+        finally:
+            print("Merge sorting...")
+    return 0
 
 ## threaded merge sort execution time calculation function
 def merge_sort_time(arr):
@@ -188,6 +197,8 @@ arr9 = [800-i for i in range(800)]
 arr10 = [900-i for i in range(900)]
 arr11 = [1000-i for i in range(1000)] ## Python has a recursion limit
 
+input("\n\nMerge sort will occur recursively. Be patient.\n\nPress Enter to start the sorting process...")
+
 time1 = merge_sort_time(arr1)
 time2 = merge_sort_time(arr2)
 time3 = merge_sort_time(arr3)
@@ -200,25 +211,30 @@ time9 = merge_sort_time(arr9)
 time10 = merge_sort_time(arr10)
 time11 = merge_sort_time(arr11)
 
+print("\n\nMerge Sorting has finished...\n\nPlease look at the graphs\n\n")
 
-x_vals1 = [1,100,200,300,400,500,600,700,800,900,1000]
-y_vals1 = [time1,time2,time3,time4,time5,time6,time7,time8,time9,time10,time11]
-plt.plot(x_vals1, y_vals1)
-##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
-plt.xlabel('Number of Elements')
-plt.ylabel('Time of Computation')
-plt.title('Part C')
-plt.figure()
-plt.show()
+try:
+    x_vals1 = [1,100,200,300,400,500,600,700,800,900,1000]
+    y_vals1 = [time1,time2,time3,time4,time5,time6,time7,time8,time9,time10,time11]
+    plt.plot(x_vals1, y_vals1)
+    ##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
+    plt.xlabel('Number of Elements')
+    plt.ylabel('Time of Computation')
+    plt.title('Part C')
+    plt.show()
 
-## Cannot perform this step due to python having a recursion limit.
-x_vals2 = [1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
-y_vals2 = [getMn(1), getMn(100), getMn(200), getMn(300), getMn(400), getMn(500), getMn(600), getMn(700), getMn(800), getMn(900), getMn(1000)]
-plt.plot(x_vals2, y_vals2)
-##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
-plt.title('Part D')
-plt.xlabel('Number of Elements')
-plt.ylabel('Time of Computation')
-plt.figure()
-plt.show()
-
+    ## Cannot perform this step due to python having a recursion limit.
+    x_vals2 = [1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+    y_vals2 = [getMn(1), getMn(100), getMn(200), getMn(300), getMn(400), getMn(500), getMn(600), getMn(700), getMn(800), getMn(900), getMn(1000)]
+    plt.plot(x_vals2, y_vals2)
+    ##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
+    plt.title('Part D')
+    plt.xlabel('Number of Elements')
+    plt.ylabel('Time of Computation')
+    plt.show()
+except:
+    print("Recursion Limit is low on Python,\n so there are performance issues with calculating Mn.")
+finally:
+  print("Done...")
+  gc.collect()
+  sys.exit()
