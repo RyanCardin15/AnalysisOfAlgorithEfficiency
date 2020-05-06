@@ -94,8 +94,6 @@ def merge(arr,low,mid,high):
 ## depending on size of array may create way more than 2 threads
 def merge_sort(arr, low,high):
     ## calculating mid point of array
-    ##executor = ThreadPoolExecutor(max_workers=2000)
-    ##sys.setrecursionlimit(sys.getrecursionlimit() + 1)
     mid = low + (high - 1) // 2
     if low < high:
         try:
