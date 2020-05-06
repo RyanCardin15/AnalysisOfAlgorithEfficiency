@@ -1,16 +1,29 @@
 #Ryan Cardin
-#Sumedh Sohrab
+#Sumedh Saurabh
 #Kyle Cline
 #Discrete Math 2 Project 2
 import numpy as np
+from concurrent.futures import ThreadPoolExecutor
 import matplotlib.pyplot as plt
 import time
-import _thread
+import threading
+import sys
+##import inspect
+import math
+
+## python has a recursion limit
+# Iterative tail recurser
+# taken from stack overflow
+### BEGIN COPY ####
+
+
+### END COPY ###
 
 
 ## Functions:
 # Part 1 - Kyle:
 # Part 2 - Ryan:
+## calculates insertion comparisons
 def getCn(n):
     return (n * n) * .5 + (.5 * n ) - 1
 
@@ -26,6 +39,16 @@ def Insertionsort(array):
     end = time.time() ## end clock
     return (end-start)
 # Part 3 - Sumedh:
+## calculates merge comparisons
+
+def getMn(n): ## Python has a recursion limit so will only go up to 996
+    sys.setrecursionlimit(sys.getrecursionlimit() + 1)
+    if n == 1:
+        return  0
+    return getMn(n // 2) + math.ceil(getMn(n / 2)) + int(n - 1)
+
+## ascending sort merge function
+## will merge both left and right sides of array into ascending order
 def merge(arr,low,mid,high):
     ## size_left is size of left part and size_right is size
     ## of right part
@@ -78,26 +101,31 @@ def merge(arr,low,mid,high):
 ## threaded recursive merge sort function
 ## depending on size of array may create way more than 2 threads
 def merge_sort(arr, low,high):
-    start = time.time() ## begin clock
-    ## calculating mid point of array 
+    ## calculating mid point of array
+    ##executor = ThreadPoolExecutor(max_workers=2000)
+    ##sys.setrecursionlimit(sys.getrecursionlimit() + 1)
     mid = low + (high - 1) // 2
-    if low < high: 
-        try:
+    if low < high:
             ## calling first half in a thread
-            _thread.start_new_thread(merge_sort,(arr, low, mid))
+            task1 = threading.Thread(target=merge_sort,args=(arr, low, mid))
 
             ## calling second half in a thread
-            _thread.start_new_thread(merge_sort,(arr, mid + 1, high))
+            task2 = threading.Thread(target=merge_sort,args=(arr, mid + 1, high))
+
+            ## threads
+            task1.start() ## starts left merge sort
+            task2.start() ## starts right merge sort
 
             ## merging the two halves
-            _merge(arr, low, mid, high)
-        except:
-            print("Error: Failed to thread")
-        while 1: ## waits for all threads to finish
-            pass
-    end = time.time() ## end clock
-    return (end-start)
+            merge(arr, low, mid, high)
 
+## threaded merge sort execution time calculation function
+def merge_sort_time(arr):
+    size = len(arr)
+    start = time.time()  ## begin clock
+    merge_sort(arr, 0, size-1)
+    end = time.time()  ## end clock
+    return end - start
 #Part 1 - Kyle
 
 
@@ -114,7 +142,7 @@ array7 = [600-i for i in range(600)]
 array8 = [700-i for i in range(700)]
 array9 = [800-i for i in range(800)]
 array10 = [900-i for i in range(900)]
-array11 = [1000-i for i in range(1000)]
+array11 = [996-i for i in range(1000)]
 
 time1 = Insertionsort(array1)
 time2 = Insertionsort(array2)
@@ -166,17 +194,37 @@ arr7 = [600-i for i in range(600)]
 arr8 = [700-i for i in range(700)]
 arr9 = [800-i for i in range(800)]
 arr10 = [900-i for i in range(900)]
-arr11 = [1000-i for i in range(1000)]
+arr11 = [1000-i for i in range(950)] ## Python has a recursion limit
 
-time1 = merge_sort(arr1)
-time2 = merge_sort(arr2)
-time3 = merge_sort(arr3)
-time4 = merge_sort(arr4)
-time5 = merge_sort(arr5)
-time6 = merge_sort(arr6)
-time7 = merge_sort(arr7)
-time8 = merge_sort(arr8)
-time9 = merge_sort(arr9)
-time10 = merge_sort(arr10)
-time11 = merge_sort(arr11)
+time1 = merge_sort_time(arr1)
+time2 = merge_sort_time(arr2)
+time3 = merge_sort_time(arr3)
+time4 = merge_sort_time(arr4)
+time5 = merge_sort_time(arr5)
+time6 = merge_sort_time(arr6)
+time7 = merge_sort_time(arr7)
+time8 = merge_sort_time(arr8)
+time9 = merge_sort_time(arr9)
+time10 = merge_sort_time(arr10)
+time11 = merge_sort_time(arr11)
 
+
+x_vals1 = [1,100,200,300,400,500,600,700,800,900,950]
+y_vals1 = [time1,time2,time3,time4,time5,time6,time7,time8,time9,time10,time11]
+plt.plot(x_vals1, y_vals1)
+##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
+plt.xlabel('Number of Elements')
+plt.ylabel('Time of Computation')
+plt.title('Part C')
+plt.figure()
+plt.show()
+
+x_vals2 = [1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+y_vals2 = [getMn(1), getMn(100), getMn(200), getMn(300), getMn(400), getMn(500), getMn(600), getMn(700), getMn(800), getMn(900), getMn(950)]
+plt.plot(x_vals2, y_vals2)
+##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
+plt.title('Part D')
+plt.xlabel('Number of Elements')
+plt.ylabel('Time of Computation')
+plt.figure()
+plt.show()
