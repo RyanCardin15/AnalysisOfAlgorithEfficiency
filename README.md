@@ -20,9 +20,9 @@ We comapare two sorting algorithms, and analyze each of their eifficiancies.
 11) N = (N_0 = 1, ... , i-- = N_i--, ... , n_i = 1)
 
 ## To Run
-python /venv/AlgorithmAnalysis.py
+> python /venv/AlgorithmAnalysis.py
 
 or
 
-cd venv
-python AlgorithmAnalysis.py
+> cd venv
+> python AlgorithmAnalysis.py
