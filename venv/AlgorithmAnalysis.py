@@ -36,7 +36,7 @@ def getMn(n): ## Python has a recursion limit so will only go up to 996 iteratio
     sys.setrecursionlimit(sys.getrecursionlimit() + 1)
     if n == 1:
         return  0
-    return getMn(n // 2) + math.ceil(getMn(n / 2)) + int(n - 1)
+    return getMn(n // 2) + getMn(math.ceil(n / 2)) + int(n - 1)
 
 ## ascending sort merge function
 ## will merge both left and right sides of array into ascending order
