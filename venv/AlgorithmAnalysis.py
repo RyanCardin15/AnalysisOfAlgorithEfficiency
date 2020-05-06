@@ -117,6 +117,7 @@ def merge_sort_time(arr):
     merge_sort(arr, 0, size-1)
     end = time.time()  ## end clock
     return end - start
+
 #Part 1 - Kyle
 
 
