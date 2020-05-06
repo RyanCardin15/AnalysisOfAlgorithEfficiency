@@ -171,7 +171,7 @@ yvals = [getCn(1), getCn(100), getCn(200), getCn(300), getCn(400), getCn(500), g
 plt.plot(xvals, yvals)
 plt.title('Part D')
 plt.xlabel('Number of Elements')
-plt.ylabel('Time of Computation')
+plt.ylabel('Number of Comparisons')
 plt.show()
 
 #Part e
@@ -230,7 +230,7 @@ try:
     ##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
     plt.title('Part D')
     plt.xlabel('Number of Elements')
-    plt.ylabel('Time of Computation')
+    plt.ylabel('Number of Comparisons')
     plt.show()
 except:
     print("Recursion Limit is low on Python,\n so there are performance issues with calculating Mn.")
