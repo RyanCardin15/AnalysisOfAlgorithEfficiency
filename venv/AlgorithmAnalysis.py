@@ -11,15 +11,6 @@ import sys
 ##import inspect
 import math
 
-## python has a recursion limit
-# Iterative tail recurser
-# taken from stack overflow
-### BEGIN COPY ####
-
-
-### END COPY ###
-
-
 ## Functions:
 # Part 1 - Kyle:
 # Part 2 - Ryan:
@@ -41,7 +32,7 @@ def Insertionsort(array):
 # Part 3 - Sumedh:
 ## calculates merge comparisons
 
-def getMn(n): ## Python has a recursion limit so will only go up to 996
+def getMn(n): ## Python has a recursion limit so will only go up to 996 iterations
     sys.setrecursionlimit(sys.getrecursionlimit() + 1)
     if n == 1:
         return  0
@@ -194,7 +185,7 @@ arr7 = [600-i for i in range(600)]
 arr8 = [700-i for i in range(700)]
 arr9 = [800-i for i in range(800)]
 arr10 = [900-i for i in range(900)]
-arr11 = [1000-i for i in range(950)] ## Python has a recursion limit
+arr11 = [1000-i for i in range(1000)] ## Python has a recursion limit
 
 time1 = merge_sort_time(arr1)
 time2 = merge_sort_time(arr2)
@@ -209,7 +200,7 @@ time10 = merge_sort_time(arr10)
 time11 = merge_sort_time(arr11)
 
 
-x_vals1 = [1,100,200,300,400,500,600,700,800,900,950]
+x_vals1 = [1,100,200,300,400,500,600,700,800,900,1000]
 y_vals1 = [time1,time2,time3,time4,time5,time6,time7,time8,time9,time10,time11]
 plt.plot(x_vals1, y_vals1)
 ##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
@@ -219,8 +210,9 @@ plt.title('Part C')
 plt.figure()
 plt.show()
 
-x_vals2 = [1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
-y_vals2 = [getMn(1), getMn(100), getMn(200), getMn(300), getMn(400), getMn(500), getMn(600), getMn(700), getMn(800), getMn(900), getMn(950)]
+## Cannot perform this step due to python having a recursion limit.
+x_vals2 = [1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+y_vals2 = [getMn(1), getMn(100), getMn(200), getMn(300), getMn(400), getMn(500), getMn(600), getMn(700), getMn(800), getMn(900), getMn(1000)]
 plt.plot(x_vals2, y_vals2)
 ##grps.set(xlabel='Number of Elements', ylabel='Time of Computation')
 plt.title('Part D')
@@ -228,3 +220,4 @@ plt.xlabel('Number of Elements')
 plt.ylabel('Time of Computation')
 plt.figure()
 plt.show()
+
