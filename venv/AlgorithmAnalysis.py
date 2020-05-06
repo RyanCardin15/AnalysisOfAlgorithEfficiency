@@ -174,15 +174,6 @@ plt.xlabel('Number of Elements')
 plt.ylabel('Number of Comparisons')
 plt.show()
 
-#Part e
-#Both charts in part c and d are actually very similar. They both experience exponential growth at about the same rate
-#This is because the time of computation grows at the same rate as the number of elements in the array because
-#there are more elements to compare and more steps to complete the insertion sort.
-#Also, I thought that the specs of your computer would mitigate the reason of change, but because the amount of
-#elements increase along with the amount of elements needing to be compared, the computer still has to compare them
-#all none the less so the rate of change will be similar
-
-
 #Part 3 - Sumedh
 ## B:
 arr1 = [1]
