@@ -20,4 +20,4 @@ Threaded Merge Sort
 11) N = (N_0 = 1, ... , i-- = N_i--, ... , n_i = 1)
 
 ## To Run
-python AnalysisOfAlgorithEfficiency.py
+python /venv/AlgorithmAnalysis.py
