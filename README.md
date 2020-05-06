@@ -3,8 +3,8 @@
 We comapare two sorting algorithms, and analyze each of their eifficiancies.
 
 ## Sorting Algorithms:
-Insertion Sort
-Threaded Merge Sort
+* Insertion Sort
+* Threaded Merge Sort
 
 ## Arrays to be sorted to Ascending:
 1) N = (N_0 = 1000, ... , i-- = N_i--, ... , n_i = 1)
