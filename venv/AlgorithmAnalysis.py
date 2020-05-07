@@ -112,7 +112,7 @@ def merge_sort(arr, low,high):
             task1.join()
             task2.join()
         except:
-            print("Thread - Skip")
+            print("Thread - Break")
         finally:
             print("Merge sorting...")
     return 0
@@ -152,7 +152,7 @@ y5 = np.minimum(y2, 10)
 y6 = np.maximum(y1, 0.5)
 plt.fill_between(n, y5, y6, where=y5>y6, color='grey', alpha=0.5)
 plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-
+plt.show()
 plt.savefig('Analysis_1a.png')
 #..................................................................
 
@@ -197,6 +197,7 @@ y6 = np.maximum(y1, 11)
 plt.fill_between(n, y5, y6, where=y5<=y6, color='grey', alpha=0.5)
 
 plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.show()
 plt.savefig('Analysis_1b.png')
 #..................................................................
 
@@ -232,6 +233,7 @@ y6 = np.maximum(y2, y1)
 plt.fill_between(n, y5, y6, where=y5<=y6, color='grey', alpha=0.5)
 
 plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.show()
 plt.savefig('Analysis_1c.png')
 #..................................................................
 
@@ -265,6 +267,7 @@ y7 = np.minimum(y1, y1)
 y8 = np.maximum(y1, 20)
 plt.fill_between(n, y7, y8, where=y5<=y6, color='grey', alpha=0.5)
 plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.show()
 plt.savefig('Analysis_1d.png')
 #..................................................................
 
@@ -300,6 +303,7 @@ y6 = np.maximum(y2, y3)
 plt.fill_between(n, y5, y6, where=y5<=y6, color='grey', alpha=0.5)
 
 plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.show()
 plt.savefig('Analysis_1e.png')
 #..................................................................
 
