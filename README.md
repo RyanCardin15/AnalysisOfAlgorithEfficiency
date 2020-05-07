@@ -1,6 +1,6 @@
 # AnalysisOfAlgorithEfficiency
 
-We comapare two sorting algorithms, and analyze each of their efficiancies.
+We comapare two sorting algorithms and analyze each of their efficiancies.
 
 ## Sorting Algorithms:
 * Insertion Sort
