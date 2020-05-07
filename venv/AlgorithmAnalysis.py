@@ -126,7 +126,182 @@ def merge_sort_time(arr):
     return end - start
 
 #Part 1 - Kyle
+#...........................Analysis 1a...........................
+# Construct lines
+# n >= 1 && n=1..10
+n = np.linspace(1, 10, 2000)
 
+# y >= (1/2)n
+y1 = n
+
+# y <= n - |n/2| + 1
+y2 = n
+
+# Make plot
+plt.title('Analysis 1a')
+plt.plot(n, y1, label=r'(1/2)n = Ω(n)')
+plt.plot(n, y2, label=r'n - |n/2| + 1= Ω(n)')
+
+plt.xlim((0, 12))
+plt.ylim((0, 7))
+plt.xlabel(r'$n$')
+plt.ylabel(r'$y$')
+
+# Fill feasible region
+y5 = np.minimum(y2, 10)
+y6 = np.maximum(y1, 0.5)
+plt.fill_between(n, y5, y6, where=y5>y6, color='grey', alpha=0.5)
+plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+
+plt.savefig('Analysis_1a.png')
+#..................................................................
+
+
+#...........................Analysis 1b...........................
+# Construct lines
+# n >= 3 && n=1..10
+n = np.linspace(3, 10, 2000)
+
+## y >= (1/2)n
+#y1 = 0*n
+#
+## y <= n - ⌊n/2⌋ + 1
+#y2 = n - np.floor(n/2) + 1
+#
+## y <= n
+#y3 = n
+
+# y >= 0
+y1 = 0*n
+
+# y <= n - ⌊n/2⌋ + 1
+y2 = n
+
+# y <= n
+y3 = n
+
+# Make plot
+plt.title('Analysis 1b')
+plt.plot(n, y1, 'gp', label=r'y ≥ 0 = O(c)')
+plt.plot(n, y2, 'r', label=r'y ≤  n - ⌊n/2⌋  + 1 = O(n)')
+plt.plot(n, y3, 'b', label=r'y ≤  n = O(n)')
+
+plt.xlim((0, 12))
+plt.ylim((0, 10))
+plt.xlabel(r'$n$')
+plt.ylabel(r'$y$')
+
+# Fill feasible region
+y5 = np.minimum(y2, -1)
+y6 = np.maximum(y1, 11)
+plt.fill_between(n, y5, y6, where=y5<=y6, color='grey', alpha=0.5)
+
+plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.savefig('Analysis_1b.png')
+#..................................................................
+
+
+#...........................Analysis 1c...........................
+# Construct lines
+# n >= 3 && n=1..10
+n = np.linspace(3, 10, 2000)
+
+# y >= n^2
+y1 = n**2
+
+# y <= n
+y2 = n
+
+# y <= n^2
+y3 = n**2
+
+# Make plot
+plt.title('Analysis 1c')
+plt.plot(n, y1, 'gp', label=r'y ≥ n^2')
+plt.plot(n, y2, 'r', label=r'y ≤ n')
+plt.plot(n, y3, 'b', label=r'y ≤ n^2')
+
+plt.xlim((0, 12))
+plt.ylim((0, 20))
+plt.xlabel(r'$n$')
+plt.ylabel(r'$y$')
+
+# Fill feasible region
+y5 = np.minimum(y3, y2)
+y6 = np.maximum(y2, y1)
+plt.fill_between(n, y5, y6, where=y5<=y6, color='grey', alpha=0.5)
+
+plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.savefig('Analysis_1c.png')
+#..................................................................
+
+#...........................Analysis 1d...........................
+# Construct lines
+# n >= 3 && n=1..10
+n = np.linspace(3, 10, 2000)
+
+# y >= n^2
+y1 = n**2
+
+# y <= n
+y2 = n
+
+# Make plot
+plt.title('Analysis 1d')
+plt.plot(n, y1, 'g', label=r'y ≥ n^2')
+plt.plot(n, y2, 'r', label=r'y ≤ n')
+
+plt.xlim((0, 12))
+plt.ylim((0, 20))
+plt.xlabel(r'$n$')
+plt.ylabel(r'$y$')
+
+# Fill feasible region
+y5 = np.minimum(0, y1)
+y6 = np.maximum(y2, y2)
+plt.fill_between(n, y5, y6, where=y5<=y6, color='grey', alpha=0.5)
+
+y7 = np.minimum(y1, y1)
+y8 = np.maximum(y1, 20)
+plt.fill_between(n, y7, y8, where=y5<=y6, color='grey', alpha=0.5)
+plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.savefig('Analysis_1d.png')
+#..................................................................
+
+
+#...........................Analysis 1e...........................
+# Construct lines
+# n >= 21 && n=1..10
+n = np.linspace(2, 10, 2000)
+
+# y >= n^3
+y1 = n**3
+
+# y <= n^2
+y2 = n**2
+
+# y <= n^3
+y3 = n**3
+
+# Make plot
+plt.title('Analysis 1e')
+plt.plot(n, y1, 'gp', label=r'y ≥ n^2')
+plt.plot(n, y2, 'r', label=r'y ≤ n')
+plt.plot(n, y3, 'b', label=r'y ≤ n^2')
+
+plt.xlim((0, 12))
+plt.ylim((0, 20))
+plt.xlabel(r'$n$')
+plt.ylabel(r'$y$')
+
+# Fill feasible region
+y5 = np.minimum(y1, y2)
+y6 = np.maximum(y2, y3)
+plt.fill_between(n, y5, y6, where=y5<=y6, color='grey', alpha=0.5)
+
+plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.savefig('Analysis_1e.png')
+#..................................................................
 
 #Part 2 - Ryan
 #Part a --> Located Under Functions
